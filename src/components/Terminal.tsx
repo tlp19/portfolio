@@ -46,12 +46,14 @@ const Terminal = (props: TerminalProps) => {
   const echoCommands = [
     "help",
     "about",
+    // "education",
+    // "experience",
     "projects",
-    "contact",
-    "awards",
-    "repo",
+    "contact", // -> links
+    "awards", // remove
+    "repo", // remove
     "skills",
-    "website",
+    "website", // remove
   ] as const;
   type EchoCommand = typeof echoCommands[number];
   const utilityCommands = ["clear", "all", "cv"] as const;
@@ -96,7 +98,7 @@ const Terminal = (props: TerminalProps) => {
           <dt>repo</dt>
           <dd>Take a look at some of my work</dd>
           <dt>cv</dt>
-          <dd>Check out my CV [pdf - 197KB]</dd>
+          <dd>Check out my CV [pdf - 156KB]</dd>
           <dt>contact</dt>
           <dd>Bring on the spam</dd>
           <dt>website</dt>
@@ -200,7 +202,7 @@ const Terminal = (props: TerminalProps) => {
           opportunities. My contact details can be found by typing 'contact',
           and if you would like to check out my {glow("CV")}, simply type 'cv'
           or click{" "}
-          <a href="CV.pdf" download="Craig Feldman - Curriculum Vitae.pdf">
+          <a href="CV.pdf" download="Tanguy Perron - Curriculum Vitae.pdf">
             here
           </a>
           .
@@ -226,14 +228,6 @@ const Terminal = (props: TerminalProps) => {
           that provides property managers and buildings with some really cool
           software and tools. The project uses TypeScript, Node.js, React (with
           Material-UI components) and Firebase.
-        </p>
-        <p>
-          You can also check out my MSc thesis{" "}
-          <a href="MSc_Thesis.pdf" download="Craig Feldman - MSc Thesis.pdf">
-            An investigation into the applicability of a blockchain based voting
-            system
-          </a>{" "}
-          - this one took a while!
         </p>
       </>
     ),
