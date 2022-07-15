@@ -2,9 +2,9 @@
 
 Hi! This is my personal portfolio.
 
-It is themed after a terminal window, and can be used a such.
+It is themed after a terminal window, and can be used as such.
 
-To get started, type in ``help` and press Enter!
+To get started, type in `help` and press Enter!
 
 ## Credits
 

@@ -1,6 +1,7 @@
 {
-  "name": "craigfeldman.com",
+  "name": "tlp19-portfolio",
   "private": true,
+  "homepage": "http://tlp19.github.io/portfolio",
   "dependencies": {
     "@types/node": "^17.0.31",
     "@types/react": "^18.0.8",
@@ -14,7 +15,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "npm run build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
