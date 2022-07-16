@@ -559,7 +559,7 @@ const Terminal = (props: TerminalProps) => {
         }
         case "cv": {
           setOutput([...output, commandRecord]);
-          downloadFile("CV.pdf", "Craig Feldman - Curriculum Vitae.pdf");
+          downloadFile("CV.pdf", "Tanguy Perron - Curriculum Vitae.pdf");
           break;
         }
       }
