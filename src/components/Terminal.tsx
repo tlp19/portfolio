@@ -46,18 +46,21 @@ const Terminal = (props: TerminalProps) => {
   const echoCommands = [
     "help",
     "about",
-    // "education",
-    // "experience",
+    "experience",
+    "education",
     "projects",
-    "contact", // -> links
-    "awards", // remove
-    "repo", // remove
+    "links",
     "skills",
-    "website", // remove
   ] as const;
   type EchoCommand = typeof echoCommands[number];
-  const utilityCommands = ["clear", "all", "cv"] as const;
+
+  const utilityCommands = [
+    "cv",
+    "all",
+    "clear",
+  ] as const;
   type UtilityCommand = typeof utilityCommands[number];
+
   const allCommands = [...echoCommands, ...utilityCommands] as const;
   type Command = typeof allCommands[number];
 
@@ -81,28 +84,25 @@ const Terminal = (props: TerminalProps) => {
     help: (
       <div>
         <p>
-          Wow, I thought the only people who would visit this site would be bots
-          and spammers, guess I was wrong. Just type any of the commands below
-          to get some more info. You can even type a few letters and press [tab]
-          or '.' to autocomplete.
+          Just type any of the commands below to get some more info.
+          You can even type a few letters and press [Tab] or '.' to 
+          autocomplete.
         </p>
         <dl>
           <dt>about</dt>
-          <dd>Stop stalking me</dd>
+          <dd>Some general information about me</dd>
+          <dt>experience</dt>
+          <dd>My work experience</dd>
+          <dt>education</dt>
+          <dd>What I've been studying for the past few years</dd>
           <dt>projects</dt>
-          <dd>Yeah, I've made some cool stuff before</dd>
+          <dd>A curated selection of some of my projects</dd>
           <dt>skills</dt>
-          <dd>I'm pretty good at some things</dd>
-          <dt>awards</dt>
-          <dd>A bit of boasting</dd>
-          <dt>repo</dt>
-          <dd>Take a look at some of my work</dd>
+          <dd>Some of the things that I'm pretty good at</dd>
+          <dt>links</dt>
+          <dd>Email, GitHub, LinkedIn</dd>
           <dt>cv</dt>
           <dd>Check out my CV [pdf - 156KB]</dd>
-          <dt>contact</dt>
-          <dd>Bring on the spam</dd>
-          <dt>website</dt>
-          <dd>How I built this</dd>
           <dt>all</dt>
           <dd>Tell me everything</dd>
           <dt>clear</dt>
@@ -209,43 +209,34 @@ const Terminal = (props: TerminalProps) => {
         </p>
       </div>
     ),
-    projects: (
+    experience: (
       <>
-        <p>
-          I'm always working on comp sciey (not really a word) things. Why don't
-          you check out a few of my public code repositories? Just type 'repo'
-          to get the links.
-        </p>
-        <p>
-          I've also dabbled in producing a{" "}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://weaverworks.co.za"
-          >
-            property-management portal
-          </a>{" "}
-          that provides property managers and buildings with some really cool
-          software and tools. The project uses TypeScript, Node.js, React (with
-          Material-UI components) and Firebase.
-        </p>
+        <ul>
+          <li>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/craig-feldman"
+            >
+              GitHub
+            </a>{" "}
+            - Unfortunately, I could only make a small subset of my projects
+            public.
+          </li>
+          <li>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://bitbucket.org/fldcra001"
+            >
+              Bitbucket
+            </a>{" "}
+            - A few university projects.
+          </li>
+        </ul>
       </>
     ),
-    contact: (
-      <>
-        <dl>
-          <dt>Email</dt>
-          <dd>
-            <a href="mailto:craig@craigfeldman.com">craig@craigfeldman.com</a>
-          </dd>
-          <dt>Smoke signals</dt>
-          <dd>general Cape Town region</dd>
-          <dt>myspace</dt>
-          <dd>just kidding</dd>
-        </dl>
-      </>
-    ),
-    awards: (
+    education: (
       <>
         <dl>
           <dt>2016</dt>
@@ -284,31 +275,26 @@ const Terminal = (props: TerminalProps) => {
         </dl>
       </>
     ),
-    repo: (
+    projects: (
       <>
-        <ul>
-          <li>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://github.com/craig-feldman"
-            >
-              GitHub
-            </a>{" "}
-            - Unfortunately, I could only make a small subset of my projects
-            public.
-          </li>
-          <li>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://bitbucket.org/fldcra001"
-            >
-              Bitbucket
-            </a>{" "}
-            - A few university projects.
-          </li>
-        </ul>
+        <p>
+          I'm always working on comp sciey (not really a word) things. Why don't
+          you check out a few of my public code repositories? Just type 'repo'
+          to get the links.
+        </p>
+        <p>
+          I've also dabbled in producing a{" "}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://weaverworks.co.za"
+          >
+            property-management portal
+          </a>{" "}
+          that provides property managers and buildings with some really cool
+          software and tools. The project uses TypeScript, Node.js, React (with
+          Material-UI components) and Firebase.
+        </p>
       </>
     ),
     skills: (
@@ -447,49 +433,22 @@ const Terminal = (props: TerminalProps) => {
         </dl>
       </>
     ),
-    website: (
+    links: (
       <>
-        <p>
-          I built this website from scratch using {glow("React")} and{" "}
-          {glow("TypeScript")}. It is a rewrite of my{" "}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://github.com/craig-feldman/personal-website"
-          >
-            previous
-          </a>{" "}
-          website that used{" "}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://terminal.jcubic.pl/"
-          >
-            JQuery Terminal Plugin
-          </a>{" "}
-          (and some inspiration from{" "}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="http://www.ronniepyne.com"
-          >
-            Ronnie Pyne
-          </a>
-          ).
-        </p>
-        <p>
-          The source code for this site can be found on{" "}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://github.com/craig-feldman/personal-website-react"
-          >
-            GitHub
-          </a>
-          . Feel free to use this website for inspiration, or go ahead and copy
-          some of the code! If you do, all I ask is that you give this site a
-          mention :)
-        </p>
+        <dl>
+          <dt>Email</dt>
+          <dd>
+            <a href="mailto:tanguy.perron19@imperial.ac.uk">tanguy.perron19@imperial.ac.uk</a>
+          </dd>
+          <dt>GitHub</dt>
+          <dd>
+            <a href="https://github.com/tlp19">github.com/tlp19</a>
+          </dd>
+          <dt>LinkedIn</dt>
+          <dd>
+            <a href="https://www.linkedin.com/in/tanguy-perron/">linkedin.com/in/tanguy-perron</a>
+          </dd>
+        </dl>
       </>
     ),
   };
@@ -539,12 +498,11 @@ const Terminal = (props: TerminalProps) => {
           // Output all commands in a custom order.
           const allCommandsOutput = [
             "about",
-            "awards",
-            "skills",
+            "experience",
+            "education",
             "projects",
-            "repo",
-            "contact",
-            "website",
+            "skills",
+            "links",
           ].map((command) => (
             <>
               <div className="terminal-heading">{command}</div>
