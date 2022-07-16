@@ -236,10 +236,9 @@ const Terminal = (props: TerminalProps) => {
               <li>Machine Learning</li>
               <li>Computer Vision</li>
               <li>High Level Programming</li>
-              <li>Operations Research</li>
-              <li>Robotics</li>
               <li>Embedded Systems</li>
               <li>Software Systems</li>
+              <li>Operations Research</li>
             </ul>
           </dd>
           <dd>
@@ -254,6 +253,7 @@ const Terminal = (props: TerminalProps) => {
           <br/>
           <dt>2019-2016 • French Scientific Baccalauréat • Lycée Blaise Pascal (FR)</dt>
           <dd>Achieved a score of 19.55/20 overall (~97.75%).</dd>
+          <dd>Received the {glow("Highest Honours")}.</dd>
           <dd>
             Optional modules undertook:
             <ul>
