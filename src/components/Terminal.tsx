@@ -110,96 +110,51 @@ const Terminal = (props: TerminalProps) => {
         </dl>
       </div>
     ),
+
     about: (
       <div>
         <p>
-          Hey there! Thanks for taking such a keen interest in me. Hopefully
-          you're not gonna spam or stalk me... Okay, I guess if you must stalk
-          me, just give me fair warning so I can look presentable when you
-          arrive at my door.
+          Hey there! As you probably know, my name is {glow("Tanguy Perron")}.
+          I'm a {getAge(new Date(2001, 10, 15))} year old{" "}
+          {glow("Electronic and Information Engineering student")} doing a
+          Master of Engineering at {glow("Imperial College London")}.
         </p>
         <p>
-          Right, so, where to begin? Well, my parents met in... Nah, just
-          kidding.
-          <br />
-          As you probably know, my name is {glow("Craig Feldman")}. I'm a{" "}
-          {getAge(new Date(1992, 12, 23))} year old {glow("Computer Scientist")}{" "}
-          born and bred in the beautiful South Africa and currently living in
-          Cape Town.
+          I am French and did my {glow("French Scientific Baccalauréat")} in France, 
+          near Paris. I achieved the {glow("Highest Honours")} with a grade of{" "}
+          {glow("19.55/20 (~97.75%)")}. I then moved to London (UK) to pursue 
+          my higher studies.
         </p>
         <p>
-          I graduated with distinction from the University of Cape Town with a
-          Bachelor of Business Science degree in Computer Science. It comprised
-          of four years of computer science courses, as well as many business
-          courses (for example, I completed three years of economics, stats, and
-          finance).
+          I since have been studying at {glow("Imperial College London")} and
+          could not have made a better choice! For the past{" "}
+          {getAge(new Date(2019, 10, 1)) + 1} years, I have been studying
+          the fundamentals of computer electronics and 
+          programming and I am fascinated by it. I am also dabbling in some 
+          higher-level subjects, such as Artificial Intelligence and Computer
+          Vision, and I am loving every second of it (although the difficulty
+          is extremely high and I've been facing many challenges).{" "}
+          <em>
+              To learn more about my studies, you can type 'education'. And to
+              learn about the projects I have done so far at Imperial College,
+              you can type 'projects'.
+          </em>
         </p>
         <p>
-          I also have an MSc degree in Computer Science from the University of
-          Oxford, where I was awarded a full academic scholarship. Studying
-          abroad was an amazing experience - highlights include early morning
-          rowing, croquet, formal dinners, and just exploring Oxford with
-          amazing people and friends.
+          Alongside my studies, I have had some work experience as a{" "}
+          {glow("Full Stack and Cloud Developer")}, and I am currently
+          pursuing an internship as a {glow("Data Scientist")}.{" "}
+          <em>
+            To learn more about my work experiences, you can type 'experience'.
+          </em>
         </p>
         <p>
-          Some of my interests include: machine learning, the blockchain and
-          cryptography, and leveraging these tools to help solve problems,
-          particularly in the {glow("fintech")} space. I'm also pretty into fly
-          fishing!
+          Some of my current interests include: emerging technologies,
+          machine learning, mobile development, and photography.
         </p>
         <p>
-          My previous formal work experience includes:
-          <ul>
-            <li>
-              working on asset management software at{" "}
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://www.fundamental.net"
-              >
-                Fundamental Software
-              </a>
-              ;
-            </li>
-            <li>
-              working for a great content creation app called{" "}
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://madewithover.com"
-              >
-                Over
-              </a>
-              ;
-            </li>
-            <li>
-              helping people to buy, store, and learn about cryptocurrency at{" "}
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://luno.com"
-              >
-                Luno
-              </a>
-              .
-            </li>
-          </ul>
-        </p>
-        <p>
-          Nowadays I'm developing a method to download food... I wish! I am
-          currently working at{" "}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://stitch.money"
-          >
-            Stitch
-          </a>
-          , developing a single API for payments and financial data in Africa.
-        </p>
-        <p>
-          Please feel free to get in touch with me to discuss any cool
-          opportunities. My contact details can be found by typing 'contact',
+          Please feel free to get in touch with me to discuss any opportunities.
+          You can find different ways to reach me by typing 'links',
           and if you would like to check out my {glow("CV")}, simply type 'cv'
           or click{" "}
           <a href="CV.pdf" download="Tanguy Perron - Curriculum Vitae.pdf">
@@ -209,107 +164,172 @@ const Terminal = (props: TerminalProps) => {
         </p>
       </div>
     ),
+
     experience: (
       <>
-        <ul>
-          <li>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://github.com/craig-feldman"
-            >
-              GitHub
-            </a>{" "}
-            - Unfortunately, I could only make a small subset of my projects
-            public.
-          </li>
-          <li>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://bitbucket.org/fldcra001"
-            >
-              Bitbucket
-            </a>{" "}
-            - A few university projects.
-          </li>
-        </ul>
-      </>
-    ),
-    education: (
-      <>
         <dl>
-          <dt>2016</dt>
-          <dd>University of Oxford full scholarship</dd>
+          <dt>Apr-Sep 2022 • Data Scientist Intern • Institut de Recherches Servier (FR)</dt>
+          <dd>sentence.</dd>
           <dd>
-            Standard Bank Africa Chairman's Scholarship (
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.standardbank.com/sbg/careers/early-careers/early-careers-overview/chairmans-scholarship"
-            >
-              view scholarship
-            </a>
-            )
+            list:
+            <ul>
+              <li>abc</li>
+              <li>def</li>
+            </ul>
+          </dd>
+          <dd>
+            list:
+            <ul>
+              <li>abc</li>
+              <li>def</li>
+            </ul>
           </dd>
 
-          <dt>2015</dt>
-          <dd>Dean's Merit List</dd>
+          <br/>
+          <dt>Jul-Sep 2021 • Full-stack and Cloud Developer • UniVerse (Remote)</dt>
+          <dd>sentence.</dd>
+          <dd>
+            list:
+            <ul>
+              <li>abc</li>
+              <li>def</li>
+            </ul>
+          </dd>
+          <dd>
+            list:
+            <ul>
+              <li>abc</li>
+              <li>def</li>
+            </ul>
+          </dd>
 
-          <dt>2014</dt>
-          <dd>Dean's Merit List</dd>
-          <dd>BSG Prize (Best 3rd year Computer Science student)</dd>
-          <dd>Class Medal (1st place) for all 3 Computer Science courses</dd>
-          <dd>Commerce Faculty Scholarship</dd>
-
-          <dt>2013</dt>
-          <dd>Dean's Merit List</dd>
-          <dd>Computer Science Merit Award (top 5%)</dd>
-          <dd>Class Medal for Inferential Statistics</dd>
-          <dd>Computer Science Merit Award (top 5%)</dd>
-          <dd>Commerce Faculty Scholarship</dd>
-
-          <dt>2012</dt>
-          <dd>Dean's Merit List</dd>
-          <dd>Computer Science Merit Award (top 5%)</dd>
+          <br/>
+          <dt>Aug-Sep 2020 • Multi-skilled Crew Member • McDonald's (FR)</dt>
+          <dd>sentence.</dd>
+          <dd>
+            list:
+            <ul>
+              <li>abc</li>
+              <li>def</li>
+            </ul>
+          </dd>
+          <dd>
+            list:
+            <ul>
+              <li>abc</li>
+              <li>def</li>
+            </ul>
+          </dd>
         </dl>
       </>
     ),
-    projects: (
+
+    education: (
       <>
-        <p>
-          I'm always working on comp sciey (not really a word) things. Why don't
-          you check out a few of my public code repositories? Just type 'repo'
-          to get the links.
-        </p>
-        <p>
-          I've also dabbled in producing a{" "}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://weaverworks.co.za"
-          >
-            property-management portal
-          </a>{" "}
-          that provides property managers and buildings with some really cool
-          software and tools. The project uses TypeScript, Node.js, React (with
-          Material-UI components) and Firebase.
-        </p>
+        <dl>
+          <dt>Today-2019 • Electronic and Information MEng • Imperial College London (UK)</dt>
+          <dd>Currently in my third year.</dd>
+          <dd>
+            Main modules studied:
+            <ul>
+              <li>Artificial Intelligence</li>
+              <li>Machine Learning</li>
+              <li>Computer Vision</li>
+              <li>High Level Programming</li>
+              <li>Operations Research</li>
+              <li>Robotics</li>
+              <li>Embedded Systems</li>
+              <li>Software Systems</li>
+            </ul>
+          </dd>
+          <dd>
+            Optional modules undertook:
+            <ul>
+              <li>Designing Interventions for Behavioural Change</li>
+              <li>Creative Digital Platforms</li>
+              <li>Introduction to Psychology</li>
+            </ul>
+          </dd>
+
+          <br/>
+          <dt>2019-2016 • French Scientific Baccalauréat • Lycée Blaise Pascal (FR)</dt>
+          <dd>Achieved a score of 19.55/20 overall (~97.75%).</dd>
+          <dd>
+            Optional modules undertook:
+            <ul>
+              <li>Spanish</li>
+              <li>Latin</li>
+            </ul>
+          </dd>
+        </dl>
       </>
     ),
+
+    projects: (
+      <>
+        <dl>
+          <dt>
+            NotiSound (IoT Device) • Year 2 Embedded Systems CW -{" "}
+            <a
+              href="https://github.com/tlp19/returnSuccess4-Notisound"
+              target="_blank"
+              rel="noopener noreferrer">
+              GitHub repository
+            </a>
+          </dt>
+          <dd>sentence.</dd>
+          <dd>sentence.</dd>
+          <dd>sentence.</dd>
+
+          <br/>
+          <dt>
+            Music Synthesizer OS • Year 2 Embedded Systems CW -{" "}
+            <a
+              href="https://github.com/tlp19/ES-synth-returnSuccess4"
+              target="_blank"
+              rel="noopener noreferrer">
+              GitHub repository
+            </a>
+          </dt>
+          <dd>sentence.</dd>
+          <dd>sentence.</dd>
+          <dd>sentence.</dd>
+
+          <br/>
+          <dt>
+            Neural Network library • Year 2 Machine Learning CW - <em>Private repository</em>
+          </dt>
+          <dd>sentence.</dd>
+          <dd>sentence.</dd>
+          <dd>sentence.</dd>
+
+          <br/>
+          <dt>
+            Mars Rover • Year 2 Final Project -{" "}
+            <a
+              href="https://github.com/tlp19/MarsRover-returnSuccess3"
+              target="_blank"
+              rel="noopener noreferrer">
+              GitHub repository
+            </a>
+          </dt>
+          <dd>sentence.</dd>
+          <dd>sentence.</dd>
+          <dd>sentence.</dd>
+        </dl>
+      </>
+    ),
+
     skills: (
       <>
-        <div className="terminal-heading">Languages</div>
+        {/* Color coding
+          10-13      00DE12
+          6-9        99D100
+          0-5        D16200 */}
+
+        <div className="terminal-heading">Natural Languages</div>
         <dl>
-          <dt>TypeScript</dt>
-          <dd>
-            ##{" "}
-            <span style={{ color: "#00DE12", textShadow: "0 0 5px #00DE12" }}>
-              #############
-            </span>{" "}
-            ##
-          </dd>
-          <dt>Go</dt>
+          <dt>English</dt>
           <dd>
             ##{" "}
             <span style={{ color: "#00DE12", textShadow: "0 0 5px #00DE12" }}>
@@ -318,25 +338,56 @@ const Terminal = (props: TerminalProps) => {
             {"  "}
             ##
           </dd>
-          <dt>Kotlin</dt>
+          <dt>French</dt>
           <dd>
             ##{" "}
-            <span style={{ color: "#42D100", textShadow: "0 0 5px #42D100" }}>
+            <span style={{ color: "#00DE12", textShadow: "0 0 5px #00DE12" }}>
+              #############
+            </span>
+            {" "}
+            ##
+          </dd>
+          <dt>German</dt>
+          <dd>
+            ##{" "}
+            <span style={{ color: "#99D100", textShadow: "0 0 5px #99D100" }}>
+              ######
+            </span>
+            {"        "}
+            ##
+          </dd>
+          <dt>Spanish</dt>
+          <dd>
+            ##{" "}
+            <span style={{ color: "#99D100", textShadow: "0 0 5px #99D100" }}>
+              ######
+            </span>
+            {"        "}
+            ##
+          </dd>
+        </dl>
+
+        <div className="terminal-heading">Programming Languages</div>
+        <dl>
+          <dt>Python</dt>
+          <dd>
+            ##{" "}
+            <span style={{ color: "#00DE12", textShadow: "0 0 5px #00DE12" }}>
               ###########
             </span>
             {"   "}
             ##
           </dd>
-          <dt>Java</dt>
+          <dt>Dart</dt>
           <dd>
             ##{" "}
-            <span style={{ color: "#42D100", textShadow: "0 0 5px #42D100" }}>
-              ###########
+            <span style={{ color: "#00DE12", textShadow: "0 0 5px #00DE12" }}>
+              ##########
             </span>
-            {"   "}
+            {"    "}
             ##
           </dd>
-          <dt>C# and C++</dt>
+          <dt>C and C++</dt>
           <dd>
             ##{" "}
             <span style={{ color: "#99D100", textShadow: "0 0 5px #99D100" }}>
@@ -345,7 +396,25 @@ const Terminal = (props: TerminalProps) => {
             {"      "}
             ##
           </dd>
-          <dt>Python</dt>
+          <dt>F#</dt>
+          <dd>
+            ##{" "}
+            <span style={{ color: "#99D100", textShadow: "0 0 5px #99D100" }}>
+              ######
+            </span>
+            {"        "}
+            ##
+          </dd>
+          <dt>SystemVerilog</dt>
+          <dd>
+            ##{" "}
+            <span style={{ color: "#D16200", textShadow: "0 0 5px #D16200" }}>
+              #####
+            </span>
+            {"         "}
+            ##
+          </dd>
+          <dt>MatLab</dt>
           <dd>
             ##{" "}
             <span style={{ color: "#D16200", textShadow: "0 0 5px #D16200" }}>
@@ -361,16 +430,7 @@ const Terminal = (props: TerminalProps) => {
           <dt>GCP / Firebase</dt>
           <dd>
             ##{" "}
-            <span style={{ color: "#99D100", textShadow: "0 0 5px 99D100" }}>
-              #########
-            </span>
-            {"     "}
-            ##
-          </dd>
-          <dt>Azure</dt>
-          <dd>
-            ##{" "}
-            <span style={{ color: "#99D100", textShadow: "0 0 5px 99D100" }}>
+            <span style={{ color: "#99D100", textShadow: "0 0 5px #99D100" }}>
               #########
             </span>
             {"     "}
@@ -380,39 +440,48 @@ const Terminal = (props: TerminalProps) => {
           <dd>
             ##{" "}
             <span style={{ color: "#99D100", textShadow: "0 0 5px #99D100" }}>
-              ########
+              #######
             </span>
-            {"      "}
+            {"       "}
+            ##
+          </dd>
+          <dt>DevOps</dt>
+          <dd>
+            ##{" "}
+            <span style={{ color: "#99D100", textShadow: "0 0 5px #99D100" }}>
+              #######
+            </span>
+            {"       "}
             ##
           </dd>
           <dt>
-            Infrastructure <br />
+            Infrastructures <br />
             <span style={{ fontSize: "smaller" }}>
-              (Docker, Kubernetes, DBs, etc.)
+              (VMs, WSL, Docker, DBs, etc.)
             </span>
           </dt>
           <dd>
             ##{" "}
-            <span style={{ color: "#99D100", textShadow: "0 0 5px 99D100" }}>
-              #########
+            <span style={{ color: "#99D100", textShadow: "0 0 5px #99D100" }}>
+              #######
             </span>
-            {"     "}
+            {"       "}
             ##
           </dd>
         </dl>
 
-        <div className="terminal-heading">Web</div>
+        <div className="terminal-heading">Web, Desktop and Mobile</div>
         <dl>
-          <dt>React</dt>
+          <dt>Flutter</dt>
           <dd>
             ##{" "}
             <span style={{ color: "#00DE12", textShadow: "0 0 5px #00DE12" }}>
-              ############
+              ##########
             </span>
-            {"  "}
+            {"    "}
             ##
           </dd>
-          <dt>Angular</dt>
+          <dt>General web development</dt>
           <dd>
             ##{" "}
             <span style={{ color: "#D16200", textShadow: "0 0 5px #D16200" }}>
@@ -421,32 +490,36 @@ const Terminal = (props: TerminalProps) => {
             {"         "}
             ##
           </dd>
-          <dt>General web development</dt>
-          <dd>
-            ##{" "}
-            <span style={{ color: "#5BD100", textShadow: "0 0 5px 5BD100" }}>
-              #########
-            </span>
-            {"     "}
-            ##
-          </dd>
         </dl>
       </>
     ),
+
     links: (
       <>
         <dl>
           <dt>Email</dt>
           <dd>
-            <a href="mailto:tanguy.perron19@imperial.ac.uk">tanguy.perron19@imperial.ac.uk</a>
+            <a href="mailto:tanguy.perron19@imperial.ac.uk">
+              tanguy.perron19@imperial.ac.uk
+            </a>
           </dd>
           <dt>GitHub</dt>
           <dd>
-            <a href="https://github.com/tlp19">github.com/tlp19</a>
+            <a
+              href="https://github.com/tlp19"
+              target="_blank"
+              rel="noopener noreferrer">
+              github.com/tlp19
+            </a>
           </dd>
           <dt>LinkedIn</dt>
           <dd>
-            <a href="https://www.linkedin.com/in/tanguy-perron/">linkedin.com/in/tanguy-perron</a>
+            <a
+              href="https://www.linkedin.com/in/tanguy-perron/"
+              target="_blank"
+              rel="noopener noreferrer">
+              linkedin.com/in/tanguy-perron
+            </a>
           </dd>
         </dl>
       </>
