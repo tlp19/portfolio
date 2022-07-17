@@ -94,17 +94,17 @@ const Terminal = (props: TerminalProps) => {
           <dt>experience</dt>
           <dd>My work experience</dd>
           <dt>education</dt>
-          <dd>What I've been studying for the past few years</dd>
+          <dd>What/where I've been studying for the past few years</dd>
           <dt>projects</dt>
           <dd>A curated selection of some of my projects</dd>
           <dt>skills</dt>
           <dd>Some of the things that I'm pretty good at</dd>
           <dt>links</dt>
-          <dd>Email, GitHub, LinkedIn</dd>
+          <dd>GitHub, LinkedIn, Email</dd>
           <dt>cv</dt>
           <dd>Check out my CV [pdf - 156KB]</dd>
           <dt>all</dt>
-          <dd>Tell me everything</dd>
+          <dd>Displays everything at once (you've been warned)</dd>
           <dt>clear</dt>
           <dd>Clears the terminal of all output</dd>
         </dl>
@@ -123,7 +123,7 @@ const Terminal = (props: TerminalProps) => {
           I am French and did my {glow("French Scientific Baccalauréat")} in France, 
           near Paris. I achieved the {glow("Highest Honours")} with a grade of{" "}
           {glow("19.55/20 (~97.75%)")}. I then moved to London (UK) to pursue 
-          my higher studies.
+          my higher studies...
         </p>
         <p>
           I since have been studying at {glow("Imperial College London")} and
@@ -133,7 +133,7 @@ const Terminal = (props: TerminalProps) => {
           programming and I am fascinated by it. I am also dabbling in some 
           higher-level subjects, such as Artificial Intelligence and Computer
           Vision, and I am loving every second of it (although the difficulty
-          is extremely high and I've been facing many challenges).{" "}
+          is quite high and I've been facing many challenges).{" "}
           <em>
               To learn more about my studies, you can type 'education'. And to
               learn about the projects I have done so far at Imperial College,
@@ -569,12 +569,6 @@ const Terminal = (props: TerminalProps) => {
     links: (
       <>
         <dl>
-          <dt>Email</dt>
-          <dd>
-            <a href="mailto:tanguy.perron19@imperial.ac.uk">
-              tanguy.perron19@imperial.ac.uk
-            </a>
-          </dd>
           <dt>GitHub</dt>
           <dd>
             <a
@@ -584,6 +578,7 @@ const Terminal = (props: TerminalProps) => {
               github.com/tlp19
             </a>
           </dd>
+
           <dt>LinkedIn</dt>
           <dd>
             <a
@@ -591,6 +586,13 @@ const Terminal = (props: TerminalProps) => {
               target="_blank"
               rel="noopener noreferrer">
               linkedin.com/in/tanguy-perron
+            </a>
+          </dd>
+
+          <dt>Email</dt>
+          <dd>
+            <a href="mailto:tanguy.perron19@imperial.ac.uk">
+              tanguy.perron19@imperial.ac.uk
             </a>
           </dd>
         </dl>
