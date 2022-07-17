@@ -84,7 +84,7 @@ const Terminal = (props: TerminalProps) => {
     help: (
       <div>
         <p>
-          Just type any of the commands below to get some more info.
+          Just type any of the commands below to get more information about me.
           You can even type a few letters and press [Tab] or '.' to 
           autocomplete.
         </p>
@@ -120,7 +120,7 @@ const Terminal = (props: TerminalProps) => {
           Master of Engineering at {glow("Imperial College London")}.
         </p>
         <p>
-          I am French and did my {glow("French Scientific Baccalauréat")} in France, 
+          I am French and did my {glow("French Scientific Baccalauréat")}
           near Paris. I achieved the {glow("Highest Honours")} with a grade of{" "}
           {glow("19.55/20 (~97.75%)")}. I then moved to London (UK) to pursue 
           my higher studies...
@@ -128,9 +128,9 @@ const Terminal = (props: TerminalProps) => {
         <p>
           I since have been studying at {glow("Imperial College London")} and
           could not have made a better choice! For the past{" "}
-          {getAge(new Date(2019, 10, 1)) + 1} years, I have been studying
-          the fundamentals of computer electronics and 
-          programming and I am fascinated by it. I am also dabbling in some 
+          {getAge(new Date(2019, 10, 1)) + 1} years, I have been learning
+          about the fundamentals of computer electronics and 
+          programming, and I am fascinated by it. I am also studying some 
           higher-level subjects, such as Artificial Intelligence and Computer
           Vision, and I am loving every second of it (although the difficulty
           is quite high and I've been facing many challenges).{" "}
@@ -150,7 +150,7 @@ const Terminal = (props: TerminalProps) => {
         </p>
         <p>
           Some of my current interests include: emerging technologies,
-          machine learning, mobile development, and photography.
+          machine learning, mobile development, photography and sailing.
         </p>
         <p>
           Please feel free to get in touch with me to discuss any opportunities.
@@ -170,16 +170,22 @@ const Terminal = (props: TerminalProps) => {
         <dl>
           <dt>Apr-Sep 2022 • Data Scientist Intern • Institut de Recherches Servier (FR)</dt>
           <dd>Unfortunately, because of confidentiality reasons, I cannot discuss what I have been working on for now.</dd>
+          <dd>But I can say that:
+            <ul>
+              <li>I am coding extensively in Python.</li>
+              <li>I am dealing with very large datasets stored in SQLite and CSV databases.</li>
+            </ul>
+          </dd>
 
           <br/>
           <dt>Jul-Sep 2021 • Full-stack and Cloud Developer • UniVerse (Remote)</dt>
           <dd>I served as a Full Stack and Cloud Developer to build a social application for Android, iOS and Web.</dd>
           <dd>I worked on both front and back-end components of the app, as well as on the design of the{" "}
               databases and DevOps.</dd>
-          <dd>This work was carried in Dart using the Flutter framework, with integration of Google Firebase services.</dd>
+          <dd>This work was carried out in Dart using the Flutter framework, with the integration of Google Firebase services.</dd>
           <dd>I also researched and produced reports on technologies that the company wished to adopt.</dd>
           <dd>I worked alongside the company's CTO as well as independently, relying on both my
-              communication and team-working skills, and my autonomy.</dd>
+              communication and team-working skills, as well as my autonomy.</dd>
 
           <br/>
           <dt>Aug-Sep 2020 • Multi-skilled Crew Member • McDonald's (FR)</dt>
@@ -193,7 +199,7 @@ const Terminal = (props: TerminalProps) => {
                   (e.g. preparing products, assembling orders and helping customers)</li>
             </ul>
           </dd>
-          <dd>Overall, I discovered what it is like to be apart of a collaborating team in such a huge company.</dd>
+          <dd>Overall, I discovered what it is like to be a part of a collaborating team in such a huge company.</dd>
         </dl>
       </>
     ),
@@ -201,7 +207,7 @@ const Terminal = (props: TerminalProps) => {
     education: (
       <>
         <dl>
-          <dt>2019-Today • Electronic and Information MEng • Imperial College London (UK)</dt>
+          <dt>2019-Today • Electronic and Information Engineering (MEng) • Imperial College London (UK)</dt>
           <dd>Currently in my third year, on track to achieve {glow("First-class Honours")}.</dd>
           <dd>
             The main modules that I have studied include:
@@ -209,7 +215,7 @@ const Terminal = (props: TerminalProps) => {
               <li>Artificial Intelligence</li>
               <li>Machine Learning</li>
               <li>Computer Vision</li>
-              <li>High Level Programming</li>
+              <li>High-Level Programming</li>
               <li>Embedded Systems</li>
               <li>Software Systems</li>
               <li>Operations Research</li>
@@ -226,7 +232,12 @@ const Terminal = (props: TerminalProps) => {
 
           <br/>
           <dt>2016-2019 • French Scientific Baccalauréat • Lycée Blaise Pascal (FR)</dt>
-          <dd>Achieved a score of 19.55/20 overall (~97.75%).</dd>
+          <dd>Achieved a score of 19.55/20 overall (~97.75%) including:
+            <ul>
+              <li>18/20 (~90%) in Mathematics</li>
+              <li>19/20 (~95%) in Physics and Chemistry</li>
+            </ul>
+          </dd>
           <dd>Received the {glow("Highest Honours")}.</dd>
           <dd>
             Optional modules undertook:
@@ -253,14 +264,14 @@ const Terminal = (props: TerminalProps) => {
           </dt>
           <dd>
             NotiSound is an IoT device that, when paired with its App, alerts people with hearing disabilities of
-            sound events in their home. This could be their doorbell ringing, or a fire alarm going off.
+            sound events in their homes. This could be their doorbell ringing, or a fire alarm going off.
           </dd>
           <dd>
             NotiSound can also be used in large houses or apartments where the doorbell may not be loud enough
             to be heard from everywhere.
           </dd>
           <dd>
-            This project was carried in groups of 4. My 3 coworkers worked on the Hardware of the project while I,
+            This project was carried out in groups of 4. My 3 coworkers worked on the Hardware of the project while I,
             due to my experience, worked on the App.</dd>
           <dd>The App was written in Dart using the Flutter framework and currently fully supports Android.</dd>
           <dd>
@@ -274,8 +285,8 @@ const Terminal = (props: TerminalProps) => {
           </dd>
           <dd>
             The Hardware devices are made of a Raspberry Pi Zero (WiFi enabled) and a microphone.
-            A custom CNN model is ran locally to classify the sounds picked up by the microphone,
-            and to then send according messages to the App.
+            A custom CNN model is run locally to classify the sounds picked up by the microphone,
+            and then send the according messages to the App.
           </dd>
           <dd>
             Working alongside my teammates, I had to design the App to meet strict communication requirements
@@ -337,7 +348,7 @@ const Terminal = (props: TerminalProps) => {
             </ul>
           </dd>
           <dd>
-            Overall, this project taught me a lot on Operating Systems and the strict requirements they have to meet.
+            Overall, this project taught me a lot about Operating Systems and the strict requirements they have to meet.
             It was a real challenge to write efficient, but safe, code with timing and memory constraints always in mind.
           </dd>
 
@@ -348,15 +359,15 @@ const Terminal = (props: TerminalProps) => {
           <dd>For this project, I worked in a team of 2 to implement a subset of the PyTorch library in Python.</dd>
           <dd>
             We coded the behaviour for forward- and backwards-propagation as well as gradient descent
-            of Linear, ReLU and Sigmoid activated Neuron Layers.
+            of Linear, ReLU- and Sigmoid-activated Neuron Layers.
           </dd>
           <dd>
-            We also implemented higher-level classes to provide abstraction for Multi-layer Networks,
+            We also implemented higher-level classes to provide an abstraction for Multi-layer Networks,
             a Preprocessor and an NN Trainer.
           </dd>
           <dd>
             Overall, this project allowed me to further understand the algorithms behind Neural Networks
-            and to deepen my knowledge of Machine Learning.
+            and deepen my knowledge of Machine Learning.
           </dd>
 
           <br/>
