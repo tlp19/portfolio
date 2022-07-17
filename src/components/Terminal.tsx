@@ -560,7 +560,7 @@ const Terminal = (props: TerminalProps) => {
             </>
           ));
 
-          setOutput([commandRecord, ...allCommandsOutput]);
+          setOutput([...output, commandRecord, <br/>, ...allCommandsOutput]);
           break;
         }
         case "cv": {
