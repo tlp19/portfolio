@@ -174,11 +174,11 @@ const Terminal = (props: TerminalProps) => {
           <br/>
           <dt>Jul-Sep 2021 • Full-stack and Cloud Developer • UniVerse (Remote)</dt>
           <dd>I served as a Full Stack and Cloud Developer to build a social application for Android, iOS and Web.</dd>
-          <dd>I worked on both {glow("front and back-end")} components of the app, as well as on the design of the{" "}
-              {glow("databases and DevOps")}.</dd>
+          <dd>I worked on both front and back-end components of the app, as well as on the design of the{" "}
+              databases and DevOps.</dd>
           <dd>This work was carried in Dart using the Flutter framework, with integration of Google Firebase services.</dd>
           <dd>I also researched and produced reports on technologies that the company wished to adopt.</dd>
-          <dd>I worked alongside the {glow("company's CTO")} as well as independently, relying on both my
+          <dd>I worked alongside the company's CTO as well as independently, relying on both my
               communication and team-working skills, and my autonomy.</dd>
 
           <br/>
@@ -189,11 +189,11 @@ const Terminal = (props: TerminalProps) => {
             <ul>
               <li>some requiring a high level of autonomy, discipline and organization 
                   (e.g. taking orders, cleaning and maintenance)</li>
-              <li>others challenging my team working skills and communication to achieve {glow("high-efficiency")} standards 
+              <li>others challenging my team working skills and communication to achieve high-efficiency standards 
                   (e.g. preparing products, assembling orders and helping customers)</li>
             </ul>
           </dd>
-          <dd>Overall, I discovered what it is like to be apart of a {glow("collaborating team")} in such a huge company.</dd>
+          <dd>Overall, I discovered what it is like to be apart of a collaborating team in such a huge company.</dd>
         </dl>
       </>
     ),
@@ -243,7 +243,7 @@ const Terminal = (props: TerminalProps) => {
       <>
         <dl>
           <dt>
-            NotiSound (IoT Device) • Year 2 Embedded Systems CW -{" "}
+            NotiSound (IoT Device) • Year 3 Embedded Systems CW -{" "}
             <a
               href="https://github.com/tlp19/NotiSound-returnSuccess4"
               target="_blank"
@@ -251,13 +251,57 @@ const Terminal = (props: TerminalProps) => {
               GitHub repository
             </a>
           </dt>
-          <dd>sentence.</dd>
-          <dd>sentence.</dd>
-          <dd>sentence.</dd>
+          <dd>
+            NotiSound is an IoT device that, when paired with its App, alerts people with hearing disabilities of
+            sound events in their home. This could be their doorbell ringing, or a fire alarm going off.
+          </dd>
+          <dd>
+            NotiSound can also be used in large houses or apartments where the doorbell may not be loud enough
+            to be heard from everywhere.
+          </dd>
+          <dd>
+            This project was carried in groups of 4. My 3 coworkers worked on the Hardware of the project while I,
+            due to my experience, worked on the App.</dd>
+          <dd>The App was written in Dart using the Flutter framework and currently fully supports Android.</dd>
+          <dd>
+            It integrates the Google Firebase services, and more specifically Cloud Messaging, to allow messages
+            to be sent from the Hardware to the User's phone. Phone notifications are then dispatched to alert the
+            User.
+          </dd>
+          <dd>
+            The App's graphical interface contains a Homepage with the history of all alerts received, an Analytics page,
+            as well as a Settings page to register new Hardware devices.
+          </dd>
+          <dd>
+            The Hardware devices are made of a Raspberry Pi Zero (WiFi enabled) and a microphone.
+            A custom CNN model is ran locally to classify the sounds picked up by the microphone,
+            and to then send according messages to the App.
+          </dd>
+          <dd>
+            Working alongside my teammates, I had to design the App to meet strict communication requirements
+            to ensure a fully functioning interface with the Hardware.
+          </dd>
+          <dd>
+            You can watch a technical demonstration of our project{" "}
+            <a
+              href="https://www.youtube.com/watch?v=70v0xNBIKIo"
+              target="_blank"
+              rel="noopener noreferrer">
+              here
+            </a>
+            , or visit our marketing website{" "}
+            <a
+              href="http://notisound.waqua.xyz/"
+              target="_blank"
+              rel="noopener noreferrer">
+              here
+            </a>
+            {" "}to view a video demonstration of the App.
+          </dd>
 
           <br/>
           <dt>
-            Music Synthesizer OS • Year 2 Embedded Systems CW -{" "}
+            Music Synthesizer OS • Year 3 Embedded Systems CW -{" "}
             <a
               href="https://github.com/tlp19/ES-synth-returnSuccess4"
               target="_blank"
@@ -265,17 +309,55 @@ const Terminal = (props: TerminalProps) => {
               GitHub repository
             </a>
           </dt>
-          <dd>sentence.</dd>
-          <dd>sentence.</dd>
-          <dd>sentence.</dd>
+          <dd>For this project, we worked in a group of 4 to create the Real-Time Operating System of a Music Synthesizer.</dd>
+          <dd>The OS was written in C and C++ and uses Threads and Interrupts to execute all the important concurrent tasks.</dd>
+          <dd>
+            To ensure safe access and synchronization of data, it relies on shared resources such as Mutexes,
+            Atomic operations and Queues.
+          </dd>
+          <dd>
+            A Real-Time Critical Analysis report was produced to prove that all tasks could (and would) meet their deadlines.
+            A Dependency Graph was also drawn to ensure that there were no deadlocks (infinite loops) in our implementation.
+            Both of those documents can be found in our Analysis Report{" "}
+            <a
+              href="https://github.com/tlp19/ES-synth-returnSuccess4#readme"
+              target="_blank"
+              rel="noopener noreferrer">
+              here
+            </a>
+            .
+          </dd>
+          <dd>
+            Some of the more complex features that we implemented are:
+            <ul>
+              <li>2 types of output waveforms (Sawtooth and Sinusoidal)</li>
+              <li>Support for multiple octaves</li>
+              <li>Scalable hardware (stackable keyboards connected via a CAN Bus)</li>
+              <li>Polyphony (multiple notes playing at the same time)</li>
+            </ul>
+          </dd>
+          <dd>
+            Overall, this project taught me a lot on Operating Systems and the strict requirements they have to meet.
+            It was a real challenge to write efficient, but safe, code with timing and memory constraints always in mind.
+          </dd>
 
           <br/>
           <dt>
-            Neural Network library • Year 2 Machine Learning CW - <em>Private repository</em>
+            Neural Network library • Year 3 Machine Learning CW - <em>Private repository</em>
           </dt>
-          <dd>sentence.</dd>
-          <dd>sentence.</dd>
-          <dd>sentence.</dd>
+          <dd>For this project, I worked in a team of 2 to implement a subset of the PyTorch library in Python.</dd>
+          <dd>
+            We coded the behaviour for forward- and backwards-propagation as well as gradient descent
+            of Linear, ReLU and Sigmoid activated Neuron Layers.
+          </dd>
+          <dd>
+            We also implemented higher-level classes to provide abstraction for Multi-layer Networks,
+            a Preprocessor and an NN Trainer.
+          </dd>
+          <dd>
+            Overall, this project allowed me to further understand the algorithms behind Neural Networks
+            and to deepen my knowledge of Machine Learning.
+          </dd>
 
           <br/>
           <dt>
@@ -287,9 +369,25 @@ const Terminal = (props: TerminalProps) => {
               GitHub repository
             </a>
           </dt>
-          <dd>sentence.</dd>
-          <dd>sentence.</dd>
-          <dd>sentence.</dd>
+          <dd>For this project, we worked in a group of 6 to build and program a remote-controlled semi-autonomous Rover.</dd>
+          <dd>I programmed an ESP32 SoC in Arduino C++ to be the hub of communications with 3 other sub-systems.</dd>
+          <dd>I used the MQTT protocol (and implemented a Broker) to communicate with a Web-App over WiFi to control the rover.</dd>
+          <dd>My sub-system also handled communications to both an FPGA (computer vision) and an
+              Arduino Nano board (motors controller) using the UART Protocol.</dd>
+          <dd>I designed custom instruction sets to decode and interpret all commands from all sub-systems.</dd>
+          <dd>I also implemented a custom obstacle-avoidance system triggered by external sensors.</dd>
+          <dd>Overall, high team-working skills and excellent communication were required to successfully coordinate with
+              my 5 coworkers.</dd>
+          <dd>
+            You can view a video demonstration of our Rover{" "}
+            <a
+              href="https://www.youtube.com/watch?v=-rey-J0QVjc"
+              target="_blank"
+              rel="noopener noreferrer">
+              here
+            </a>
+            .
+          </dd>
         </dl>
       </>
     ),
