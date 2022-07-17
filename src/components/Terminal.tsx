@@ -121,8 +121,8 @@ const Terminal = (props: TerminalProps) => {
         </p>
         <p>
           I am French and did my {glow("French Scientific Baccalauréat")}
-          near Paris. I achieved the {glow("Highest Honours")} with a grade of{" "}
-          {glow("19.55/20 (~97.75%)")}. I then moved to London (UK) to pursue 
+          {" "}near Paris. I achieved the {glow("Highest Honours")} with a grade
+          of {glow("19.55/20 (~97.75%)")}. I then moved to London (UK) to pursue 
           my higher studies...
         </p>
         <p>
