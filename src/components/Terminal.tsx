@@ -169,57 +169,31 @@ const Terminal = (props: TerminalProps) => {
       <>
         <dl>
           <dt>Apr-Sep 2022 • Data Scientist Intern • Institut de Recherches Servier (FR)</dt>
-          <dd>sentence.</dd>
-          <dd>
-            list:
-            <ul>
-              <li>abc</li>
-              <li>def</li>
-            </ul>
-          </dd>
-          <dd>
-            list:
-            <ul>
-              <li>abc</li>
-              <li>def</li>
-            </ul>
-          </dd>
+          <dd>Unfortunately, because of confidentiality reasons, I cannot discuss what I have been working on for now.</dd>
 
           <br/>
           <dt>Jul-Sep 2021 • Full-stack and Cloud Developer • UniVerse (Remote)</dt>
-          <dd>sentence.</dd>
-          <dd>
-            list:
-            <ul>
-              <li>abc</li>
-              <li>def</li>
-            </ul>
-          </dd>
-          <dd>
-            list:
-            <ul>
-              <li>abc</li>
-              <li>def</li>
-            </ul>
-          </dd>
+          <dd>I served as a Full Stack and Cloud Developer to build a social application for Android, iOS and Web.</dd>
+          <dd>I worked on both {glow("front and back-end")} components of the app, as well as on the design of the{" "}
+              {glow("databases and DevOps")}.</dd>
+          <dd>This work was carried in Dart using the Flutter framework, with integration of Google Firebase services.</dd>
+          <dd>I also researched and produced reports on technologies that the company wished to adopt.</dd>
+          <dd>I worked alongside the {glow("company's CTO")} as well as independently, relying on both my
+              communication and team-working skills, and my autonomy.</dd>
 
           <br/>
           <dt>Aug-Sep 2020 • Multi-skilled Crew Member • McDonald's (FR)</dt>
-          <dd>sentence.</dd>
+          <dd>I worked for over a month during the summer at McDonald's as a Multi-skilled Crew Member.</dd>
           <dd>
-            list:
+            I was responsible for several tasks:
             <ul>
-              <li>abc</li>
-              <li>def</li>
+              <li>some requiring a high level of autonomy, discipline and organization 
+                  (e.g. taking orders, cleaning and maintenance)</li>
+              <li>others challenging my team working skills and communication to achieve {glow("high-efficiency")} standards 
+                  (e.g. preparing products, assembling orders and helping customers)</li>
             </ul>
           </dd>
-          <dd>
-            list:
-            <ul>
-              <li>abc</li>
-              <li>def</li>
-            </ul>
-          </dd>
+          <dd>Overall, I discovered what it is like to be apart of a {glow("collaborating team")} in such a huge company.</dd>
         </dl>
       </>
     ),
@@ -227,10 +201,10 @@ const Terminal = (props: TerminalProps) => {
     education: (
       <>
         <dl>
-          <dt>Today-2019 • Electronic and Information MEng • Imperial College London (UK)</dt>
-          <dd>Currently in my third year.</dd>
+          <dt>2019-Today • Electronic and Information MEng • Imperial College London (UK)</dt>
+          <dd>Currently in my third year, on track to achieve {glow("First-class Honours")}.</dd>
           <dd>
-            Main modules studied:
+            The main modules that I have studied include:
             <ul>
               <li>Artificial Intelligence</li>
               <li>Machine Learning</li>
@@ -251,7 +225,7 @@ const Terminal = (props: TerminalProps) => {
           </dd>
 
           <br/>
-          <dt>2019-2016 • French Scientific Baccalauréat • Lycée Blaise Pascal (FR)</dt>
+          <dt>2016-2019 • French Scientific Baccalauréat • Lycée Blaise Pascal (FR)</dt>
           <dd>Achieved a score of 19.55/20 overall (~97.75%).</dd>
           <dd>Received the {glow("Highest Honours")}.</dd>
           <dd>
@@ -271,7 +245,7 @@ const Terminal = (props: TerminalProps) => {
           <dt>
             NotiSound (IoT Device) • Year 2 Embedded Systems CW -{" "}
             <a
-              href="https://github.com/tlp19/returnSuccess4-Notisound"
+              href="https://github.com/tlp19/NotiSound-returnSuccess4"
               target="_blank"
               rel="noopener noreferrer">
               GitHub repository
@@ -578,7 +552,8 @@ const Terminal = (props: TerminalProps) => {
             "links",
           ].map((command) => (
             <>
-              <div className="terminal-heading">{command}</div>
+              <div className="terminal-section">{command.toUpperCase()}</div>
+              <div className="terminal-section">{"-".repeat(command.length)}</div>
               <div className="terminal-command-output">
                 {commands[command as EchoCommand]}
               </div>

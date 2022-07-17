@@ -42,7 +42,7 @@
 }
 
 .terminal-command-output {
-  padding: 10px;
+  padding: 20px;
   max-width: 800px;
 }
 
@@ -84,6 +84,10 @@
 .terminal-heading::before {
   margin-right: 5px;
   content: '-- '
+}
+
+.terminal-section::before {
+  margin-right: 5px;
 }
 
 .terminal-input {
