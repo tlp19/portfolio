@@ -133,7 +133,7 @@ const Terminal = (props: TerminalProps) => {
           programming, and I am fascinated by it. I am also studying some 
           higher-level subjects, such as Artificial Intelligence and Computer
           Vision, and I am loving every second of it (although the difficulty
-          is quite high and I've been facing many challenges).{" "}
+          is quite high and I've had to overcome many challenges).{" "}
           <em>
               To learn more about my studies, you can type 'education'. And to
               learn about the projects I have done so far at Imperial College,
