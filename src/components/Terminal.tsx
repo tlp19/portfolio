@@ -142,8 +142,7 @@ const Terminal = (props: TerminalProps) => {
         </p>
         <p>
           Alongside my studies, I have had some work experience as a{" "}
-          {glow("Full Stack and Cloud Developer")}, and I am currently
-          pursuing an internship as a {glow("Data Scientist")}.{" "}
+          {glow("Full Stack and Cloud Developer")} as well as a {glow("Data Scientist")}.{" "}
           <em>
             To learn more about my work experiences, you can type 'experience'.
           </em>
@@ -169,13 +168,13 @@ const Terminal = (props: TerminalProps) => {
       <>
         <dl>
           <dt>Apr-Sep 2022 • Data Scientist Intern • Institut de Recherches Servier (FR)</dt>
-          <dd>Unfortunately, because of confidentiality reasons, I cannot discuss what I have been working on for now.</dd>
-          <dd>But I can say that:
-            <ul>
-              <li>I am coding extensively in Python.</li>
-              <li>I am dealing with very large datasets stored in SQLite and CSV databases.</li>
-            </ul>
-          </dd>
+          <dd>I carried out work as part of the JUMP-Cell Painting Consortium of the Broad Institute of Harvard and MIT.{" "}
+              This Consortium is creating a new data-driven approach to drug discovery based on cellular imaging, image analysis, and high dimensional data analytics.{" "}
+              More notably, it aims at making cell images as computable as genomes and transcriptomes.</dd>
+          <dd>I developed a CLI program in Python to perform Quality Control tasks on the collected cell-painting images.{" "}
+              This program was later made open-source and I am still the main active contributor.</dd>
+          <dd>I also developed a GUI tool in Python to allow the team to explore new aspects of their high dimensional data.{" "}
+              In particular, this tool relied on dimensionality reduction algorithms (UMAP, t-SNE) to extract meaningful information from an SQLite database.</dd>
 
           <br/>
           <dt>Jul-Sep 2021 • Full-stack and Cloud Developer • UniVerse (Remote)</dt>
@@ -208,7 +207,7 @@ const Terminal = (props: TerminalProps) => {
       <>
         <dl>
           <dt>2019-Today • Electronic and Information Engineering (MEng) • Imperial College London (UK)</dt>
-          <dd>Currently in my third year, on track to achieve {glow("First-class Honours")}.</dd>
+          <dd>Currently in my final year, on track to achieve {glow("First-class Honours")}.</dd>
           <dd>
             The main modules that I have studied include:
             <ul>
@@ -216,14 +215,16 @@ const Terminal = (props: TerminalProps) => {
               <li>Machine Learning</li>
               <li>Computer Vision</li>
               <li>High-Level Programming</li>
+              <li>Optimization</li>
+              <li>Robotics</li>
               <li>Embedded Systems</li>
               <li>Software Systems</li>
-              <li>Operations Research</li>
             </ul>
           </dd>
           <dd>
             Optional modules undertook:
             <ul>
+              <li>Collective Intelligence: The Philosophy and Psychology of Thinking in Groups and Crowds</li>
               <li>Designing Interventions for Behavioural Change</li>
               <li>Creative Digital Platforms</li>
               <li>Introduction to Psychology</li>
