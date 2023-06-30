@@ -212,11 +212,12 @@ const Terminal = (props: TerminalProps) => {
             The main modules that I have studied include:
             <ul>
               <li>Artificial Intelligence</li>
-              <li>Machine Learning</li>
+              <li>Machine Learning & Deep Learning</li>
               <li>Computer Vision</li>
+              <li>Principles of Distributed Ledgers</li>
               <li>High-Level Programming</li>
               <li>Optimization</li>
-              <li>Robotics</li>
+              <li>Human-Centred Robotics</li>
               <li>Embedded Systems</li>
               <li>Software Systems</li>
             </ul>
@@ -224,7 +225,7 @@ const Terminal = (props: TerminalProps) => {
           <dd>
             Optional modules undertook:
             <ul>
-              <li>Collective Intelligence: The Philosophy and Psychology of Thinking in Groups and Crowds</li>
+              <li>Collective Intelligence</li>
               <li>Designing Interventions for Behavioural Change</li>
               <li>Creative Digital Platforms</li>
               <li>Introduction to Psychology</li>
@@ -254,6 +255,67 @@ const Terminal = (props: TerminalProps) => {
     projects: (
       <>
         <dl>
+          <dt>
+            Computer vision for zero-waste food containers • MEng Final Year Project -{" "}
+            <a
+              href="https://github.com/tlp19/final-year-project"
+              target="_blank"
+              rel="noopener noreferrer">
+              GitHub repository
+            </a>
+          </dt>
+          <dd>
+            This project dealt with the implementation of a smart return kiosk for reusable cups.
+            Multiple systems were implemented and integrated on a Raspberry Pi to ensure an efficient product robust to adversaries.
+          </dd>
+          <dd>
+            A comparison of different QR code scanning libraries was carried out to find the best suited for our application. 
+          </dd>
+          <dd>
+            A custom dataset of 400 cup images was constructed and manually labelled (1000 images after data augmentation).
+            This was followed by a benchmark of 3 families of object detection architectures trained on this custom data: YOLOv8, EfficientDet and MobileNetV2.
+          </dd>
+          <dd>
+            Some of the main tasks performed by the final system are:
+            <ul>
+              <li>Motion & Colour detection, using webcams</li>
+              <li>QR code decoding, using webcams</li>
+              <li>Weight measuring, using load cells</li>
+              <li>Object detection, using webcams</li>
+              <li>Object tracking, using webcams</li>
+              <li>Collection trapdoor actuation, using a continuous servo motor</li>
+              <li>User Interface, using an LED ring</li>
+            </ul>
+          </dd>
+          <dd>
+            Overall, this project allowed me to put to the test all the skills and knowledge that I had been acquiring throughout my Electronic and Information Engineering degree, ranging from hardware communication protocols to state-of-the-art machine learning models for object detection, all while challenging my understanding of embedded systems and their limitations.
+          </dd>
+
+          <br/>
+          <dt>
+            WHEEL-E • Year 4 Human-Centred Robotics Project -{" "}
+            <a
+              href="https://github.com/HCR-Smart-Wheelchair-2023/Smart-Wheelchair-Main"
+              target="_blank"
+              rel="noopener noreferrer">
+              GitHub repository
+            </a>
+          </dt>
+          <dd>
+            WHEEL-E is a smart autonomous wheelchair that aims to improve the independence and social life of people with disabilities.
+          </dd>
+          <dd>
+            The wheelchair can be controlled by voice commands or via an accessible user interface to navigate to specific locations autonomously.
+            It can analyse where the surrounding people are going and avoid collisions preemptively.
+            The wheelchair also has a laser path-indicator to inform the bystanders of where the wheelchair is going.
+          </dd>
+          <dd>This project was carried out in groups of 14, and the software of the wheelchair was programmed using ROS (Robot Operating System), which we had to learn on the job.</dd>
+          <dd>I was responsible for implementing a simulation environment using the Gazebo software, so that any development made on the software of the wheelchair could be tested before being deployed to the real wheelchair.
+            This therefore made the development of new features much faster and safer.</dd>
+          <dd>Overall, high team-working skills and excellent communication were required to successfully coordinate with
+            my 13 coworkers.</dd>
+
+          <br/>
           <dt>
             NotiSound (IoT Device) • Year 3 Embedded Systems CW -{" "}
             <a
@@ -355,24 +417,6 @@ const Terminal = (props: TerminalProps) => {
 
           <br/>
           <dt>
-            Neural Network library • Year 3 Machine Learning CW - <em>Private repository</em>
-          </dt>
-          <dd>For this project, I worked in a team of 2 to implement a subset of the PyTorch library in Python.</dd>
-          <dd>
-            We coded the behaviour for forward- and backwards-propagation as well as gradient descent
-            of Linear, ReLU- and Sigmoid-activated Neuron Layers.
-          </dd>
-          <dd>
-            We also implemented higher-level classes to provide an abstraction for Multi-layer Networks,
-            a Preprocessor and an NN Trainer.
-          </dd>
-          <dd>
-            Overall, this project allowed me to further understand the algorithms behind Neural Networks
-            and deepen my knowledge of Machine Learning.
-          </dd>
-
-          <br/>
-          <dt>
             Mars Rover • Year 2 Final Project -{" "}
             <a
               href="https://github.com/tlp19/MarsRover-returnSuccess3"
@@ -388,7 +432,7 @@ const Terminal = (props: TerminalProps) => {
               Arduino Nano board (motors controller) using the UART Protocol.</dd>
           <dd>I designed custom instruction sets to decode and interpret all commands from all sub-systems.</dd>
           <dd>I also implemented a custom obstacle-avoidance system triggered by external sensors.</dd>
-          <dd>Overall, high team-working skills and excellent communication were required to successfully coordinate with
+          <dd>Overall, team-working skills and good communication were required to successfully coordinate with
               my 5 coworkers.</dd>
           <dd>
             You can view a video demonstration of our Rover{" "}
