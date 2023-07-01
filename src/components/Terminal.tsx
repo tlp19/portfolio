@@ -276,6 +276,9 @@ const Terminal = (props: TerminalProps) => {
             This was followed by a benchmark of 3 families of object detection architectures trained on this custom data: YOLOv8, EfficientDet and MobileNetV2.
           </dd>
           <dd>
+            I designed and implemented a custom object tracking algorithm based on motion tracking.
+          </dd>
+          <dd>
             Some of the main tasks performed by the final system are:
             <ul>
               <li>Motion & Colour detection, using webcams</li>
