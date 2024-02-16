@@ -756,7 +756,7 @@ const Terminal = (props: TerminalProps) => {
               clearInterval(interval);
               setOutput([...previousOutput, commandRecord]);
             }
-          }, 100);
+          }, 90);
         }
       }
     }
