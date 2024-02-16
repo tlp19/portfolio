@@ -4,6 +4,7 @@ import TerminalOutput from "./TerminalOutput";
 import InputArea from "./InputArea";
 import ErrorMessage from "./ErrorMessage";
 import WelcomeMessage from "./WelcomeMessage";
+import fireworks from "./fireworks";
 
 // Just a little helper function so I don't have to continually update my age
 const getAge = (birthDate: Date) => {
@@ -58,6 +59,7 @@ const Terminal = (props: TerminalProps) => {
     "cv",
     "all",
     "clear",
+    "pew",
   ] as const;
   type UtilityCommand = typeof utilityCommands[number];
 
@@ -107,6 +109,8 @@ const Terminal = (props: TerminalProps) => {
           <dd>Displays everything at once (you've been warned)</dd>
           <dt>clear</dt>
           <dd>Clears the terminal of all output</dd>
+          <dt>pew</dt>
+          <dd>pew pew...</dd>
         </dl>
       </div>
     ),
@@ -116,28 +120,34 @@ const Terminal = (props: TerminalProps) => {
         <p>
           Hey there! As you probably know, my name is {glow("Tanguy Perron")}.
           I'm a {getAge(new Date(2001, 10, 15))} year old{" "}
-          {glow("Electronic and Information Engineering student")} doing a
-          Master of Engineering at {glow("Imperial College London")}.
+          {glow("Innovation Design Engineering (MSc/MA) student")}
+          at {glow("Imperial College London")} and the {glow("Royal College of Art")}.
         </p>
         <p>
           I am French and did my {glow("French Scientific Baccalauréat")}
           {" "}near Paris. I achieved the {glow("Highest Honours")} with a grade
           of {glow("19.55/20 (~97.75%)")}. I then moved to London (UK) to pursue 
-          my higher studies...
+          my further education...
         </p>
         <p>
-          I since have been studying at {glow("Imperial College London")} and
-          could not have made a better choice! For the past{" "}
-          {getAge(new Date(2019, 10, 1)) + 1} years, I have been learning
-          about the fundamentals of computer electronics and 
-          programming, and I am fascinated by it. I am also studying some 
-          higher-level subjects, such as Artificial Intelligence and Computer
-          Vision, and I am loving every second of it (although the difficulty
-          is quite high and I've had to overcome many challenges).{" "}
+          I since have been studying at {glow("Imperial College London")} and 
+          the {glow("Royal College of Art")} and
+          could not have made a better choice!
+        </p>
+        <p>
+          I started by doing an {glow("MEng in Electronic and Information Engineering")} at{" "}
+          {glow("Imperial College London")}, where I have learned
+          about computer electronics, programming, as well as higher level subjects
+          such as machine learning and computer vision.
+
+          I then decided to do an {glow("MA/MSc in Innovation Design Engineering")} at  
+          both {glow("Imperial College London")} and the {glow("Royal College of Art")},
+          where I have learned about design thinking, user-centred design and the
+          sustainability of it all.{" "}
+
           <em>
               To learn more about my studies, you can type 'education'. And to
-              learn about the projects I have done so far at Imperial College,
-              you can type 'projects'.
+              learn about the projects I have done so far, you can type 'projects'.
           </em>
         </p>
         <p>
@@ -206,8 +216,12 @@ const Terminal = (props: TerminalProps) => {
     education: (
       <>
         <dl>
-          <dt>2019-Today • Electronic and Information Engineering (MEng) • Imperial College London (UK)</dt>
-          <dd>Currently in my final year, on track to achieve {glow("First-class Honours")}.</dd>
+          <dt>2023-Today • Innovation Design Engineering (MSc/MA) • Imperial College London & Royal College of Art (UK)</dt>
+          <dd>Currently in my first year.</dd>
+
+          <br/>
+          <dt>2019-2023 • Electronic and Information Engineering (MEng) • Imperial College London (UK)</dt>
+          <dd>Achieved {glow("First-class Honours")}.</dd>
           <dd>
             The main modules that I have studied include:
             <ul>
@@ -215,6 +229,7 @@ const Terminal = (props: TerminalProps) => {
               <li>Machine Learning & Deep Learning</li>
               <li>Computer Vision</li>
               <li>Principles of Distributed Ledgers</li>
+              <li>Privacy Engineering</li>
               <li>High-Level Programming</li>
               <li>Optimization</li>
               <li>Human-Centred Robotics</li>
@@ -464,9 +479,9 @@ const Terminal = (props: TerminalProps) => {
           <dd>
             ##{" "}
             <span style={{ color: "#00DE12", textShadow: "0 0 5px #00DE12" }}>
-              ############
+              #############
             </span>
-            {"  "}
+            {" "}
             ##
           </dd>
           <dt>French</dt>
@@ -478,6 +493,15 @@ const Terminal = (props: TerminalProps) => {
             {" "}
             ##
           </dd>
+          <dt>Spanish</dt>
+          <dd>
+            ##{" "}
+            <span style={{ color: "#99D100", textShadow: "0 0 5px #99D100" }}>
+              #######
+            </span>
+            {"       "}
+            ##
+          </dd>
           <dt>German</dt>
           <dd>
             ##{" "}
@@ -486,16 +510,7 @@ const Terminal = (props: TerminalProps) => {
             </span>
             {"        "}
             ##
-          </dd>
-          <dt>Spanish</dt>
-          <dd>
-            ##{" "}
-            <span style={{ color: "#99D100", textShadow: "0 0 5px #99D100" }}>
-              ######
-            </span>
-            {"        "}
-            ##
-          </dd>
+          </dd>²
         </dl>
 
         <div className="terminal-heading">Programming Languages</div>
@@ -522,9 +537,9 @@ const Terminal = (props: TerminalProps) => {
           <dd>
             ##{" "}
             <span style={{ color: "#99D100", textShadow: "0 0 5px #99D100" }}>
-              ########
+              #########
             </span>
-            {"      "}
+            {"     "}
             ##
           </dd>
           <dt>F#</dt>
@@ -556,6 +571,28 @@ const Terminal = (props: TerminalProps) => {
           </dd>
         </dl>
 
+        <div className="terminal-heading">Web, Desktop and Mobile</div>
+        <dl>
+          <dt>Flutter</dt>
+          <dd>
+            ##{" "}
+            <span style={{ color: "#00DE12", textShadow: "0 0 5px #00DE12" }}>
+              ##########
+            </span>
+            {"    "}
+            ##
+          </dd>
+          <dt>Web development</dt>
+          <dd>
+            ##{" "}
+            <span style={{ color: "#99D100", textShadow: "0 0 5px #99D100" }}>
+              ######
+            </span>
+            {"        "}
+            ##
+          </dd>
+        </dl>
+
         <div className="terminal-heading">Cloud &amp; Infrastructure</div>
         <dl>
           <dt>GCP / Firebase</dt>
@@ -580,9 +617,9 @@ const Terminal = (props: TerminalProps) => {
           <dd>
             ##{" "}
             <span style={{ color: "#99D100", textShadow: "0 0 5px #99D100" }}>
-              #######
+              ########
             </span>
-            {"       "}
+            {"      "}
             ##
           </dd>
           <dt>
@@ -601,27 +638,6 @@ const Terminal = (props: TerminalProps) => {
           </dd>
         </dl>
 
-        <div className="terminal-heading">Web, Desktop and Mobile</div>
-        <dl>
-          <dt>Flutter</dt>
-          <dd>
-            ##{" "}
-            <span style={{ color: "#00DE12", textShadow: "0 0 5px #00DE12" }}>
-              ##########
-            </span>
-            {"    "}
-            ##
-          </dd>
-          <dt>General web development</dt>
-          <dd>
-            ##{" "}
-            <span style={{ color: "#D16200", textShadow: "0 0 5px #D16200" }}>
-              #####
-            </span>
-            {"         "}
-            ##
-          </dd>
-        </dl>
       </>
     ),
 
@@ -726,6 +742,21 @@ const Terminal = (props: TerminalProps) => {
           setOutput([...output, commandRecord]);
           downloadFile("CV.pdf", "Tanguy Perron - Curriculum Vitae.pdf");
           break;
+        }
+        case "pew": {
+          // play an ascii firework animation, one frame at a time
+          // the frames are in the fireworks array
+          const previousOutput = output;
+          let frame = 0;
+          const interval = setInterval(() => {
+            if (frame < fireworks.length) {
+              setOutput([fireworks[frame]]);
+              frame++;
+            } else {
+              clearInterval(interval);
+              setOutput([...previousOutput, commandRecord]);
+            }
+          }, 100);
         }
       }
     }
