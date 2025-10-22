@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef} from "react";
+import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import Banner from "./Banner";
 import TerminalOutput from "./TerminalOutput";
 import InputArea from "./InputArea";
@@ -7,15 +7,17 @@ import WelcomeMessage from "./WelcomeMessage";
 import fireworks from "./fireworks";
 
 // Import images
-import cpsImage from "../assets/cps.png";
-import errundsImage from "../assets/errunds_app.png";
-import ideFundamentalsImage from "../assets/ide_fundamentals.png";
-import impactImage from "../assets/impact_app.png";
+import cps1Image from "../assets/cps1.png";
+import cps2Image from "../assets/cps2.png";
+import cps3Image from "../assets/cps3.png";
+// import errundsImage from "../assets/errunds_app.png";
+// import ideFundamentalsImage from "../assets/ide_fundamentals.png";
+// import impactImage from "../assets/impact_app.png";
 import notisoundAppImage from "../assets/notisound_app.png";
 import notisoundNotifImage from "../assets/notisound_notification.png";
 import notisoundTechImage from "../assets/notisound_tech.png";
 import roverImage from "../assets/rover.png";
-import sussysImage from "../assets/sustainable_systems.png";
+// import sussysImage from "../assets/sustainable_systems.png";
 import wheeleSimImage from "../assets/wheele_sim.png";
 import wheeleChairImage from "../assets/wheele_wheelchair.png";
 import fypCoverImage from "../assets/fyp_cover.jpg";
@@ -30,9 +32,11 @@ import synthDependencyGraphImage from "../assets/synth_dependency_graph.png";
 const getAge = (birthDate: Date) => {
   var today = new Date();
   var age = today.getFullYear() - birthDate.getFullYear();
-  var m = today.getMonth() - birthDate.getMonth();
+  console.log(age);
+  var m = today.getMonth() - birthDate.getMonth() + 1; // Adjusting for zero-based month index
   if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
     age--;
+    console.log('decrease');
   }
   return age;
 };
@@ -43,6 +47,112 @@ const downloadFile = (uri: string, downloadName: string) => {
   link.href = uri;
   link.click();
   link.remove();
+};
+
+// Define a structure for the image map for clarity
+interface ImageDetails {
+  url: string;
+  caption: string;
+  displayName?: string;
+}
+type OpenImageViewerType = (imageName: string) => void;
+
+// Takes the current image/project name and the image map, returning a sorted list of project keys.
+const getProjectImageKeys = (imageName: string, imageMap: Record<string, ImageDetails>): string[] => {
+    
+    // 1. Determine the Project Key Prefix (e.g., 'fyp' from 'fyp_tracking')
+    const projectKey = imageName.split('_')[0];
+    const filterPrefix = projectKey + '_';
+
+    // 2. Filter images that start with this prefix
+    const allProjectImages = Object.keys(imageMap).filter(key => key.startsWith(filterPrefix));
+
+    console.log("Project Key:", projectKey);
+    console.log("All Project Images:", allProjectImages);
+
+    // 3. Handle Grouping and Sorting
+    if (allProjectImages.length >= 1) {
+        // Multi-image project: Return sorted list
+        return allProjectImages.sort((a, b) => 
+            a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' })
+        );
+    } else if (imageMap[imageName]) {
+        // No suffix: Return just the current image
+        return [imageName];
+    } else {
+        // No matching images found
+        return [];
+    }
+};
+
+// --- Link Generation Component ---
+// This handles the display logic for the clickable image links.
+const generateProjectImageLinks = (
+    projectPrefix: string, 
+    imageMap: Record<string, ImageDetails>, 
+    openImageViewer: OpenImageViewerType,
+    fileExtension: string = "" 
+) => {
+    
+    // Use the core logic to get the sorted list of keys for the project prefix
+    const projectImageKeys = getProjectImageKeys(projectPrefix, imageMap);
+
+    if (projectImageKeys.length === 0) {
+        return <span>(No images found for this project.)</span>;
+    }
+
+    // Map the keys to JSX elements
+    const links = projectImageKeys.map((key, index) => {
+      const imageDetails = imageMap[key];
+        
+      // Determine the Display Label:
+      let displayLabel = imageDetails.displayName;
+
+      if (!displayLabel) {
+          // Fallback: Use the suffix of the key
+          const parts = key.split('_');
+          const suffix = parts.length > 1 ? parts.slice(1).join('_') : key;
+          
+          // 1. Remove leading numbers and any subsequent underscore/separator
+          let cleanedLabel = suffix.replace(/^[0-9]+[_-]?/, '').trim();
+          
+          // 2. Retain all underscores
+          displayLabel = cleanedLabel.replace(/ /g, '_'); 
+          
+          // 3. FIX: If displayLabel is now empty (e.g., if suffix was "10"), use the full key.
+          if (!displayLabel) {
+              displayLabel = key; 
+          }
+
+          // Add the file extension if provided
+          if (fileExtension && !displayLabel.endsWith(fileExtension)) {
+              displayLabel += fileExtension;
+          }
+      }
+      
+      if (!displayLabel) return null;
+
+      const linkElement = (
+          <span
+              key={key}
+              onClick={() => openImageViewer(key)} 
+              style={{ color: "lightblue", cursor: "pointer"}}
+          >
+              {displayLabel}
+          </span>
+      );
+      
+      const separator = index === projectImageKeys.length - 1 ? "." : ", ";
+
+      return (
+          <React.Fragment key={`link-${key}`}>
+              {linkElement}
+              {separator}
+          </React.Fragment>
+      );
+    });
+
+    return links;
 };
 
 type TerminalProps = {
@@ -57,76 +167,95 @@ const Terminal = (props: TerminalProps) => {
   const [historyIndex, setHistoryIndex] = useState(3);
   const inputRef = React.useRef<HTMLInputElement>(null);
   const scrollRef = React.useRef<HTMLDivElement | null>(null);
-  const imageMap = {
-    "cps_1": { url: cpsImage, caption: "Cyber-Physical Systems - Wave Generator 1" },
-    "errunds": { url: errundsImage, caption: "SoloX - Errunds mobile app design" },    
-    "impact_app": { url: impactImage, caption: "Impact - Mobile app design" },
-    "impact_trip": { url: impactImage, caption: "Impact - Field trip to trucker rest stop for observations and interviews" },
-    "sussys": { url: sussysImage, caption: "Sustainable Systems - Circular supply chain diagram" },
-    "ide_fundamentals": { url: ideFundamentalsImage, caption: "IDE Fundamentals - Smart Craft, a DIY electronics kit" },
-    "fyp_cover": { url: fypCoverImage, caption: "MEng FYP - Computer vision for zero-waste food containers" },
-    "fyp_device": { url: fypDeviceImage, caption: "MEng FYP - Physical device" },
-    "fyp_system": { url: fypSystemDiagramImage, caption: "MEng FYP - Software system diagram" },
-    "fyp_benchmark": { url: fypBenchmarkImage, caption: "MEng FYP - Computer vision models benchmarking" },
-    "fyp_tracking": { url: fypTrackingImage, caption: "MEng FYP - Custom motion-based tracking algorithm" },
-    "wheele_chair": { url: wheeleChairImage, caption: "WHEEL-E - The wheelchair and its simulated model"},
-    "wheele_sim": { url: wheeleSimImage, caption: "WHEEL-E - Simulation of the wheelchair with its motors and sensors" },
-    "notisound_app": { url: notisoundAppImage, caption: "NotiSound - Mobile app design" },
-    "notisound_notification": { url: notisoundNotifImage, caption: "NotiSound - Example notification" },
-    "notisound_tech": { url: notisoundTechImage, caption: "NotiSound - Technology" },
+  const imageViewerRef = useRef<HTMLDivElement>(null);
+  const imageMap: Record<string, ImageDetails> = useMemo(() => ({
+    // Name the Image Key as Project_ViewerNumber_DisplayName
+    // Display name can also be overwritten using the displayName field to bypass string processing
+    "cps_1_input": { url: cps1Image, caption: "Cyber-Physical Systems - Wave Generator input" },
+    "cps_2_output": { url: cps2Image, caption: "Cyber-Physical Systems - Wave Generator output" },
+    "cps_3_mechanism": { url: cps3Image, caption: "Cyber-Physical Systems - Wave Generator mechanism" },
+    // "errunds": { url: errundsImage, caption: "SoloX - Errunds mobile app design" },    
+    // "impact_app": { url: impactImage, caption: "Impact - Mobile app design" },
+    // "impact_trip": { url: impactImage, caption: "Impact - Field trip to trucker rest stop for observations and interviews" },
+    // "sussys": { url: sussysImage, caption: "Sustainable Systems - Circular supply chain diagram" },
+    // "ide_fundamentals": { url: ideFundamentalsImage, caption: "IDE Fundamentals - Smart Craft, a DIY electronics kit" },
+    "fyp_1_main": { url: fypCoverImage, caption: "MEng FYP - Computer vision for zero-waste food containers" },
+    "fyp_2_device": { url: fypDeviceImage, displayName: "device.jpeg", caption: "MEng FYP - Physical device" },
+    "fyp_3_system": { url: fypSystemDiagramImage, caption: "MEng FYP - Software system diagram" },
+    "fyp_4_benchmark": { url: fypBenchmarkImage, caption: "MEng FYP - Computer vision models benchmarking" },
+    "fyp_5_tracking": { url: fypTrackingImage, caption: "MEng FYP - Custom motion-based tracking algorithm" },
+    "wheele_1_wheelchair": { url: wheeleChairImage, caption: "WHEEL-E - The wheelchair and its simulated model"},
+    "wheele_2_simulation": { url: wheeleSimImage, caption: "WHEEL-E - Simulation of the wheelchair with its motors and sensors" },
+    "notisound_1_app": { url: notisoundAppImage, caption: "NotiSound - Mobile app design" },
+    "notisound_2_phone": { url: notisoundNotifImage, displayName: "phone.jpeg", caption: "NotiSound - Example notification" },
+    "notisound_3_tech": { url: notisoundTechImage, displayName: "tech.jpeg", caption: "NotiSound - Technology" },
     "synth_dependency_graph": { url: synthDependencyGraphImage, caption: "Music Synthesizer OS - Tasks dependency graph" },
     "rover": { url: roverImage, caption: "Mars Rover - The Rover and its control interface" },   
-  };
+  }), []);
 
-  const [imageViewer, setImageViewer] = useState<{ url: string; caption: string } | null>(null);
+  const [imageViewer, setImageViewer] = useState<ImageDetails | null>(null);
   const [currentImageName, setCurrentImageName] = useState<string | null>(null);
 
   const openImageViewer = (imageName: string) => {
-    setCurrentImageName(imageName);
-    setImageViewer(imageMap[imageName as keyof typeof imageMap]);
+      setCurrentImageName(imageName);
+      setImageViewer(imageMap[imageName as keyof typeof imageMap]);
   };
 
-  const nextImage = () => {
-    if (!currentImageName) return;
+  // --- Navigation Logic ---
 
-    const imageNames = Object.keys(imageMap);
-    const currentIndex = imageNames.indexOf(currentImageName);
-    const nextIndex = (currentIndex + 1) % imageNames.length;
-    const nextImageName = imageNames[nextIndex];
-    setCurrentImageName(nextImageName);
-    setImageViewer(imageMap[nextImageName as keyof typeof imageMap]);
-  };
+  const nextImage = useCallback(() => {
+      if (!currentImageName) return;
 
-  const prevImage = () => {
-    if (!currentImageName) return;
+      // Use the external helper directly
+      const projectImageNames = getProjectImageKeys(currentImageName, imageMap);
+      
+      if (projectImageNames.length <= 1) return; 
 
-    const imageNames = Object.keys(imageMap);
-    const currentIndex = imageNames.indexOf(currentImageName);
-    const prevIndex = (currentIndex - 1 + imageNames.length) % imageNames.length;
-    const prevImageName = imageNames[prevIndex];
-    setCurrentImageName(prevImageName);
-    setImageViewer(imageMap[prevImageName as keyof typeof imageMap]);
-  };
+      const currentIndex = projectImageNames.indexOf(currentImageName);
+      const nextIndex = (currentIndex + 1) % projectImageNames.length;
+      const nextImageName = projectImageNames[nextIndex];
+      
+      setCurrentImageName(nextImageName);
+      setImageViewer(imageMap[nextImageName as keyof typeof imageMap]);
+  }, [currentImageName, imageMap]);
 
-  const imageViewerRef = useRef<HTMLDivElement>(null);
+  const prevImage = useCallback(() => {
+      if (!currentImageName) return;
+
+      // Use the external helper directly
+      const projectImageNames = getProjectImageKeys(currentImageName, imageMap);
+      
+      if (projectImageNames.length <= 1) return;
+
+      const currentIndex = projectImageNames.indexOf(currentImageName);
+      const prevIndex = (currentIndex - 1 + projectImageNames.length) % projectImageNames.length;
+      const prevImageName = projectImageNames[prevIndex];
+      
+      setCurrentImageName(prevImageName);
+      setImageViewer(imageMap[prevImageName as keyof typeof imageMap]);
+  }, [currentImageName, imageMap]);
+  
+  // --- Effect Hook ---
 
   useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (imageViewer) {
-        if (event.key === "ArrowLeft") {
-          prevImage();
-        } else if (event.key === "ArrowRight") {
-          nextImage();
-        }
-      }
-    };
+      const handleKeyDown = (event: KeyboardEvent) => {
+          if (imageViewer) {
+              if (event.key === "ArrowLeft") {
+                  prevImage();
+              } else if (event.key === "ArrowRight") {
+                  nextImage();
+              }
+          }
+      };
 
-    window.addEventListener("keydown", handleKeyDown);
+      window.addEventListener("keydown", handleKeyDown);
 
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
+      return () => {
+          window.removeEventListener("keydown", handleKeyDown);
+      };
   }, [imageViewer, nextImage, prevImage]);
+
+  // ---------------------------------------
 
   const scrollLastCommandTop = () => {
     scrollRef.current?.scrollIntoView();
@@ -212,17 +341,19 @@ const Terminal = (props: TerminalProps) => {
       <p>
         Hiya! As you probably know, my name is {glow("Tanguy Perron")}.
         I'm a {getAge(new Date(2001, 10, 15))} year old{" "}
-        {glow("Innovation Design Engineering (MSc/MA) student")}{" "}
+        {glow("Computer Engineer and Human-Centred Designer")},{" "}
+        and have just graduated from{" "}
+        {glow("Innovation Design Engineering (MSc/MA)")}{" "}
         at {glow("Imperial College London")} and the {glow("Royal College of Art")}.
       </p>
       <p>
-        I am French and did my {glow("French Scientific Baccalauréat")}
+        I am French and did my French Scientific Baccalauréat
         {" "}near Paris. I achieved the {glow("Highest Honours")} with a grade
-        of {glow("19.55/20 (~97.75%)")}. I then moved to London (UK) to pursue 
+        of 19.55/20 (~97.75%). I then moved to London (UK) to pursue 
         my further studies...
       </p>
       <p>
-        I since have been studying at {glow("Imperial College London")} and 
+        I have since studied at {glow("Imperial College London")} and 
         the {glow("Royal College of Art")} and
         could not have made a better choice!
       </p>
@@ -270,6 +401,15 @@ const Terminal = (props: TerminalProps) => {
   const experienceContent = (
     <>
       <dl>
+      <dt>Jul-Aug 2024 • UI/UX Designer & Frontend Developer • Villa Schmidt (Remote)</dt>
+        <dd>I worked as a UX/UI designer and front-end developer for a high-end furniture retailer based in Germany for 2 months.</dd>
+        <dd>I redesigned several key elements of their website, such as the landing page, product cards,
+            product listings, search filters, product details page, product configurator, contact information
+            section, header, footer and cookie banner (GDPR compliant).</dd>
+        <dd>I then implemented said front-end elements in the Nuxt3 framework using TypeScript in a fully reactive way
+            to work seamlessly across all key devices used by their clients.</dd>
+
+        <br/>
         <dt>Apr-Sep 2022 • Data Scientist Intern • Institut de Recherches Servier (FR)</dt>
         <dd>I carried out work as part of the JUMP-Cell Painting Consortium of the Broad Institute of Harvard and MIT.{" "}
             This Consortium is creating a new data-driven approach to drug discovery based on cellular imaging, image analysis, and high dimensional data analytics.{" "}
@@ -309,8 +449,25 @@ const Terminal = (props: TerminalProps) => {
   const educationContent = (
     <>
       <dl>
-        <dt>2023-Today • Innovation Design Engineering (MSc/MA) • Imperial College London & Royal College of Art (UK)</dt>
-        <dd>Currently in my first year.</dd>
+        <dt>2023-2025 • Innovation Design Engineering (MSc/MA) • Imperial College London & Royal College of Art (UK)</dt>
+        <dd>Graduated {glow("MSc with Merits")}.</dd>
+        <dd>
+          The main modules that I have studied include:
+          <ul>
+            <li>Design Principles</li>
+            <li>Human-Centred and Behavioural Design</li>
+            <li>Cyber-Physical Systems</li>
+            <li>Transdisciplinary Practices</li>
+            <li>Sustainable Systems</li>
+            <li>Regenerative Materials Structures and Aesthetics</li>
+          </ul>
+        </dd>
+        <dd>
+          Optional modules undertook:
+          <ul>
+            <li>User Interfaces and Interactions</li>
+          </ul>
+        </dd>
 
         <br/>
         <dt>2019-2023 • Electronic and Information Engineering (MEng) • Imperial College London (UK)</dt>
@@ -344,8 +501,8 @@ const Terminal = (props: TerminalProps) => {
         <dt>2016-2019 • French Scientific Baccalauréat • Lycée Blaise Pascal (FR)</dt>
         <dd>Achieved a score of 19.55/20 overall (~97.75%) including:
           <ul>
-            <li>18/20 (~90%) in Mathematics</li>
-            <li>19/20 (~95%) in Physics and Chemistry</li>
+            <li>18/20 (90%) in Mathematics</li>
+            <li>19/20 (95%) in Physics and Chemistry</li>
           </ul>
         </dd>
         <dd>Received the {glow("Highest Honours")}.</dd>
@@ -363,6 +520,40 @@ const Terminal = (props: TerminalProps) => {
   const projectsContent = (
     <>
       <dl>
+      <dt>
+          Wave Generator • MSc/MA Cyber-Physical Systems Project -{" "}
+          <a
+            href="https://github.com/tlp19/CyberPhysicalSystems"
+            target="_blank"
+            rel="noopener noreferrer">
+            GitHub repository
+          </a>
+        </dt>
+        <dd>
+          Images:{" "}
+          {generateProjectImageLinks("cps", imageMap, openImageViewer, ".png")}
+        </dd>
+        <dd>
+          The project was designed to be used in a live performance setting, where the user drops an object into a recording box, and the wave generator responds differently based on the material of the object (e.g. wood, metal or plastic).
+        </dd>
+        <dd>
+          It was developed using Arduino for motor control, Processing for sound input and communications, and Wekinator for Machine Learning classification tasks.
+        </dd>
+        <dd>
+          OSC messages are used for communication between Processing and Wekinator, and UART serial communication between Processing and Arduino.
+        </dd>
+        <dd>
+          The main steps of the mechanism and software are as follows:
+          <ul>
+            <li>The object's collision sound is recorded using a microphone, and the audio is processed in real-time using Processing.</li>
+            <li>The sound's main constituent frequencies are extracted by performing a FFT (Fast Fourier Transform), and are then sent to Wekinator where a machine learning model classifies the sound into one of three classes (wood, metal or plastic).</li>
+            <li>The class is then sent back to Processing, which relays it to the Arduino.</li>
+            <li>The Arduino then actuates 4 servo-motors in unique patterns based on the class returned.</li>
+            <li>Each servo controls 4 cams that lift wooden sticks in a third-class lever configuration to produce the desired wave effect.</li>
+          </ul>
+        </dd>
+
+        <br/>
         <dt>
           Computer vision for zero-waste food containers • MEng Final Year Project -{" "}
           <a
@@ -374,26 +565,7 @@ const Terminal = (props: TerminalProps) => {
         </dt>
         <dd>
           Images:{" "}
-            <span onClick={() => openImageViewer("fyp_cover")} style={{ color: "lightblue", cursor: "pointer"}}>
-              main.jpg
-            </span>
-            {", "}
-            <span onClick={() => openImageViewer("fyp_device")} style={{ color: "lightblue", cursor: "pointer"}}>
-              device.png
-            </span>
-            {", "}
-            <span onClick={() => openImageViewer("fyp_system")} style={{ color: "lightblue", cursor: "pointer"}}>
-              system.png
-            </span>
-            {", "}
-            <span onClick={() => openImageViewer("fyp_benchmark")} style={{ color: "lightblue", cursor: "pointer"}}>
-              benchmark.png
-            </span>
-            {", "}
-            <span onClick={() => openImageViewer("fyp_tracking")} style={{ color: "lightblue", cursor: "pointer"}}>
-              tracking.png
-            </span>
-            {"."}
+          {generateProjectImageLinks("fyp", imageMap, openImageViewer, ".png")}
         </dd>
         <dd>
           This project dealt with the implementation of a smart return kiosk for reusable cups.
@@ -437,14 +609,7 @@ const Terminal = (props: TerminalProps) => {
         </dt>
         <dd>
           Images:{" "}
-            <span onClick={() => openImageViewer("wheele_chair")} style={{ color: "lightblue", cursor: "pointer"}}>
-              wheelchair.png
-            </span>
-            {", "}
-            <span onClick={() => openImageViewer("wheele_sim")} style={{ color: "lightblue", cursor: "pointer"}}>
-              simulation.png
-            </span>
-            {"."}
+          {generateProjectImageLinks("wheele", imageMap, openImageViewer, ".png")}
         </dd>
         <dd>
           WHEEL-E is a smart autonomous wheelchair that aims to improve the independence and social life of people with disabilities.
@@ -472,18 +637,7 @@ const Terminal = (props: TerminalProps) => {
         </dt>
         <dd>
           Images:{" "}
-            <span onClick={() => openImageViewer("notisound_app")} style={{ color: "lightblue", cursor: "pointer"}}>
-              app.png
-            </span>
-            {", "}
-            <span onClick={() => openImageViewer("notisound_notification")} style={{ color: "lightblue", cursor: "pointer"}}>
-              phone.png
-            </span>
-            {", "}
-            <span onClick={() => openImageViewer("notisound_tech")} style={{ color: "lightblue", cursor: "pointer"}}>
-              tech.png
-            </span>
-            {"."}
+          {generateProjectImageLinks("notisound", imageMap, openImageViewer, ".png")}
         </dd>
         <dd>
           NotiSound is an IoT device that, when paired with its App, alerts people with hearing disabilities of
@@ -545,10 +699,7 @@ const Terminal = (props: TerminalProps) => {
         </dt>
         <dd>
           Images:{" "}
-            <span onClick={() => openImageViewer("synth_dependency_graph")} style={{ color: "lightblue", cursor: "pointer"}}>
-              dependency_graph.png
-            </span>
-            {"."}
+          {generateProjectImageLinks("synth", imageMap, openImageViewer, ".png")}
         </dd>
         <dd>For this project, we worked in a group of 4 to create the Real-Time Operating System of a Music Synthesizer.</dd>
         <dd>The OS was written in C and C++ and uses Threads and Interrupts to execute all the important concurrent tasks.</dd>
@@ -594,10 +745,7 @@ const Terminal = (props: TerminalProps) => {
         </dt>
         <dd>
           Images:{" "}
-            <span onClick={() => openImageViewer("rover")} style={{ color: "lightblue", cursor: "pointer"}}>
-              rover.png
-            </span>
-            {"."}
+          {generateProjectImageLinks("rover", imageMap, openImageViewer, ".png")}
         </dd>
         <dd>For this project, we worked in a group of 6 to build and program a remote-controlled semi-autonomous Rover.</dd>
         <dd>I programmed an ESP32 SoC in Arduino C++ to be the hub of communications with 3 other sub-systems.</dd>
@@ -840,8 +988,8 @@ const Terminal = (props: TerminalProps) => {
 
         <dt>Email</dt>
         <dd>
-          <a href="mailto:tanguy.perron19@imperial.ac.uk">
-            tanguy.perron19@imperial.ac.uk
+          <a href="mailto:tanguy.p@pm.me">
+            tanguy.p@pm.me
           </a>
         </dd>
       </dl>

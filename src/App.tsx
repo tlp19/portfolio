@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import Terminal from "./components/Terminal";
 
-const welcomeMessage = `Hi! I'm Tanguy. Welcome to my personal portfolio.
+const welcomeMessage = `Hi! I'm Tanguy. Welcome to my engineering portfolio.
 
 To get started, type 'help' and press [Enter] to view a list of available commands.
 `;
